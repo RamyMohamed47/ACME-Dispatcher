@@ -1,0 +1,6 @@
+{
+  "Name": "ACME_ClientHash_Dispatcher",
+  "ProjectType": "Process",
+  "Description": "Project dispatcher",
+  "MainFile": "Main.xaml"
+}
