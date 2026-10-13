@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap2010" x:Class="ACME_ACME_ExtractWorkItems" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ACME_ACME_ExtractWorkItems" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_PageSize" Type="InArgument(x:Int32)" />
     <x:Property Name="out_dt_WorkItems" Type="OutArgument(sd:DataTable)" />
@@ -63,34 +63,59 @@
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ACME Extract Work Items" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ACME Extract Work Items" sap:VirtualizedContainerService.HintSize="583.6,2252.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="pagerText" />
       <Variable x:TypeArguments="x:Int32" Name="rowCount" />
     </Sequence.Variables>
-    <ui:LogMessage DisplayName="Log Message - Start" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME_ExtractWorkItems started.&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - ACME Work Items (attach only)" HealingAgentBehavior="Job" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="8cf1a647-2bdb-47ce-9914-2c310ebc3bf4" Version="V2">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME_ExtractWorkItems started.&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - ACME Work Items (attach only)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="486.4,1001.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="8cf1a647-2bdb-47ce-9914-2c310ebc3bf4" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <uix:NGetText DisplayName="Get Text - Pager" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NGetText_1" TextString="[pagerText]" Version="V5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484.8,798.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGetText DisplayName="Get Text - Pager" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="451.2,142.4" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="8cf1a647-2bdb-47ce-9914-2c310ebc3bf4" TextString="[pagerText]" Version="V5">
               <uix:NGetText.Target>
                 <uix:TargetAnchorable ContentHash="mq-GGsB5QU6gUAM6YscTqA" DesignTimeRectangle="960, 833, 624, 27" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='*page-numbers*' parentclass='*woocommerce-pagination*' tag='UL' /&gt;" Guid="e850f2f6-5f83-428c-acbd-7af95bdb1ec5" InformativeScreenshot="90178adfa3b858129fbed3c8a6a170be.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/gGlR3tc8HESpd7Y1_xXZ8Q" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/work-items*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
               </uix:NGetText.Target>
             </uix:NGetText>
-            <If Condition="[Not System.Text.RegularExpressions.Regex.IsMatch(If(pagerText, String.Empty), &quot;\d+&quot;)]" DisplayName="If pager text has no page number" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not System.Text.RegularExpressions.Regex.IsMatch(If(pagerText, String.Empty), &quot;\d+&quot;)]" DisplayName="If pager text has no page number" sap:VirtualizedContainerService.HintSize="451.2,401.6" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <Throw DisplayName="Throw - Page count not readable" Exception="[New ApplicationException(&quot;Could not read a page number from the Work Items pager. Text read: '&quot; &amp; If(pagerText, String.Empty) &amp; &quot;'.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw DisplayName="Throw - Page count not readable" Exception="[New ApplicationException(&quot;Could not read a page number from the Work Items pager. Text read: '&quot; &amp; If(pagerText, String.Empty) &amp; &quot;'.&quot;)]" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
             </If>
-            <Assign DisplayName="Assign - out_PageCount" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="Assign - out_PageCount" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[out_PageCount]</OutArgument>
               </Assign.To>
@@ -98,7 +123,7 @@
                 <InArgument x:TypeArguments="x:Int32">[CInt(System.Text.RegularExpressions.Regex.Matches(pagerText, "\d+").Cast(Of System.Text.RegularExpressions.Match).Last().Value)]</InArgument>
               </Assign.Value>
             </Assign>
-            <uix:NExtractDataGeneric x:TypeArguments="sd:DataTable" ExtractDataSettings="{x:Null}" ExtractMetadata="&lt;extract&gt;&lt;column exact=&quot;1&quot; name=&quot;WIID&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;2&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Description&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;3&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Type&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;4&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Status&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;5&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Date&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;6&quot; /&gt;&lt;/column&gt;&lt;/extract&gt;" DisplayName="Extract Table Data - Work items, all pages" ExtractedData="[out_dt_WorkItems]" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_1" InteractionMode="Simulate" LimitExtractionTo="Page" MaximumResults="[out_PageCount]" Version="V5">
+            <uix:NExtractDataGeneric x:TypeArguments="sd:DataTable" ExtractDataSettings="{x:Null}" DisplayName="Extract Table Data - Work items, all pages" ExtractMetadata="&lt;extract&gt;&lt;column exact=&quot;1&quot; name=&quot;WIID&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;2&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Description&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;3&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Type&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;4&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Status&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;5&quot; /&gt;&lt;/column&gt;&lt;column exact=&quot;1&quot; name=&quot;Date&quot; attr=&quot;text&quot;&gt;&lt;webctrl tag=&quot;tbody&quot; /&gt;&lt;webctrl tag=&quot;tr&quot; /&gt;&lt;webctrl tag=&quot;td&quot; idx=&quot;6&quot; /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[out_dt_WorkItems]" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_1" InteractionMode="Simulate" LimitExtractionTo="Page" MaximumResults="[out_PageCount]" Version="V5">
               <uix:NExtractDataGeneric.NextLink>
                 <uix:TargetAnchorable ContentHash="wJ7IrvT5GUWy9eqPnYnB1w" DesignTimeRectangle="1550, 833, 27, 27" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-label='Next »' rel='next' tag='A' /&gt;" Guid="9acd04b8-5d82-4207-ac09-f898f9c0979a" InformativeScreenshot="cda98a892f619569ea947af8346bf375.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/pDjS4RQ_kku5JV3VdAwwvA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/work-items*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
               </uix:NExtractDataGeneric.NextLink>
@@ -120,21 +145,21 @@
         <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" ContentHash="6-lDEcMmDEilw4Ejk3oyHw" InformativeScreenshot="c6188dfbe9289796c7bd90c65b211593.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/guHMcY9IkkW9HtGfYzTHfA" Selector="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/work-items*' /&gt;" Url="https://acme-test.uipath.com/work-items" Version="V3" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <If Condition="[out_dt_WorkItems Is Nothing OrElse out_dt_WorkItems.Rows.Count = 0]" DisplayName="If no rows were extracted" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[out_dt_WorkItems Is Nothing OrElse out_dt_WorkItems.Rows.Count = 0]" DisplayName="If no rows were extracted" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <Throw DisplayName="Throw - No rows extracted" Exception="[New ApplicationException(&quot;Work Items extraction returned no rows.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[Not out_dt_WorkItems.Columns.Contains(&quot;WIID&quot;)]" DisplayName="If WIID column is missing" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[Not out_dt_WorkItems.Columns.Contains(&quot;WIID&quot;)]" DisplayName="If WIID column is missing" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <Throw DisplayName="Throw - WIID column missing" Exception="[New ApplicationException(&quot;Extracted table has no WIID column. Columns found: &quot; &amp; String.Join(&quot;, &quot;, out_dt_WorkItems.Columns.Cast(Of System.Data.DataColumn).Select(Function(c) c.ColumnName)))]" sap2010:WorkflowViewState.IdRef="Throw_3" />
         </Sequence>
       </If.Then>
     </If>
-    <Assign DisplayName="Assign - rowCount" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - rowCount" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[rowCount]</OutArgument>
       </Assign.To>
@@ -142,20 +167,20 @@
         <InArgument x:TypeArguments="x:Int32">[out_dt_WorkItems.Rows.Count]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[rowCount &lt; (out_PageCount - 1) * in_PageSize + 1 OrElse rowCount &gt; out_PageCount * in_PageSize]" DisplayName="If row count does not match page count" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[rowCount &lt; (out_PageCount - 1) * in_PageSize + 1 OrElse rowCount &gt; out_PageCount * in_PageSize]" DisplayName="If row count does not match page count" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
         <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <Throw DisplayName="Throw - Pages missing or repeated" Exception="[New ApplicationException(&quot;Extraction is incomplete: &quot; &amp; rowCount.ToString &amp; &quot; rows for &quot; &amp; out_PageCount.ToString &amp; &quot; pages of &quot; &amp; in_PageSize.ToString &amp; &quot; rows. Expected between &quot; &amp; ((out_PageCount - 1) * in_PageSize + 1).ToString &amp; &quot; and &quot; &amp; (out_PageCount * in_PageSize).ToString &amp; &quot;.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_4" />
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[out_dt_WorkItems.AsEnumerable().Any(Function(r) String.IsNullOrWhiteSpace(r(&quot;WIID&quot;).ToString)) OrElse out_dt_WorkItems.AsEnumerable().Select(Function(r) r(&quot;WIID&quot;).ToString.Trim).Distinct().Count() &lt;&gt; rowCount]" DisplayName="If a WIID is blank or duplicated" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[out_dt_WorkItems.AsEnumerable().Any(Function(r) String.IsNullOrWhiteSpace(r(&quot;WIID&quot;).ToString)) OrElse out_dt_WorkItems.AsEnumerable().Select(Function(r) r(&quot;WIID&quot;).ToString.Trim).Distinct().Count() &lt;&gt; rowCount]" DisplayName="If a WIID is blank or duplicated" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="If_5">
       <If.Then>
         <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <Throw DisplayName="Throw - Blank or duplicate WIID" Exception="[New ApplicationException(&quot;Extraction is inconsistent: a WIID is blank or appears more than once, so a page was probably skipped or read twice.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_5" />
         </Sequence>
       </If.Then>
     </If>
-    <ui:LogMessage DisplayName="Log Message - End" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;ACME_ExtractWorkItems finished. Rows=&quot; &amp; rowCount.ToString &amp; &quot; | Pages=&quot; &amp; out_PageCount.ToString]" />
+    <ui:LogMessage DisplayName="Log Message - End" sap:VirtualizedContainerService.HintSize="486.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;ACME_ExtractWorkItems finished. Rows=&quot; &amp; rowCount.ToString &amp; &quot; | Pages=&quot; &amp; out_PageCount.ToString]" />
   </Sequence>
 </Activity>

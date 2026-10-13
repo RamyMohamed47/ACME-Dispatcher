@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Dispatcher_AddWorkItemsToQueue" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Dispatcher_AddWorkItemsToQueue" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dt_WorkItems" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_QueueName" Type="InArgument(x:String)" />
@@ -6,6 +6,10 @@
     <x:Property Name="out_DuplicatesSkipped" Type="OutArgument(x:Int32)" />
     <x:Property Name="out_ItemsFailed" Type="OutArgument(x:Int32)" />
   </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -32,6 +36,8 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -60,28 +66,56 @@
       <AssemblyReference>System.Net.Mail</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add Work Items To Queue" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add Work Items To Queue" sap:VirtualizedContainerService.HintSize="583.6,2372" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="wiid" />
     </Sequence.Variables>
-    <If DisplayName="If input table is missing" Condition="[in_dt_WorkItems Is Nothing]" sap2010:WorkflowViewState.IdRef="If_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[in_dt_WorkItems Is Nothing]" DisplayName="If input table is missing" sap:VirtualizedContainerService.HintSize="521.6,401.6" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <Throw DisplayName="Throw - Input table missing" Exception="[New ArgumentNullException(&quot;in_dt_WorkItems&quot;, &quot;AddWorkItemsToQueue received no work items table.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,173.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw DisplayName="Throw - Input table missing" Exception="[New ArgumentNullException(&quot;in_dt_WorkItems&quot;, &quot;AddWorkItemsToQueue received no work items table.&quot;)]" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Then>
     </If>
-    <ui:LogMessage DisplayName="Log Message - Start" Level="Info" Message="[&quot;AddWorkItemsToQueue started. Rows=&quot; &amp; in_dt_WorkItems.Rows.Count.ToString &amp; &quot; | Queue=&quot; &amp; in_QueueName]" sap2010:WorkflowViewState.IdRef="LogMessage_1" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_WorkItems]" DisplayName="For Each Row in Data Table - Work items" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="521.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;AddWorkItemsToQueue started. Rows=&quot; &amp; in_dt_WorkItems.Rows.Count.ToString &amp; &quot; | Queue=&quot; &amp; in_QueueName]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_WorkItems]" DisplayName="For Each Row in Data Table - Work items" sap:VirtualizedContainerService.HintSize="521.6,1607.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <Assign DisplayName="Assign - wiid" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520,1425.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign - wiid" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[wiid]</OutArgument>
               </Assign.To>
@@ -89,10 +123,15 @@
                 <InArgument x:TypeArguments="x:String">[CurrentRow("WIID").ToString.Trim]</InArgument>
               </Assign.Value>
             </Assign>
-            <TryCatch DisplayName="Try Catch - Add one queue item" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch - Add one queue item" sap:VirtualizedContainerService.HintSize="486.4,1191.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
-                <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <ui:AddQueueItem DisplayName="Add Queue Item - Work item" QueueType="[in_QueueName]" Reference="[wiid]" Priority="Normal" TimeoutMS="{x:Null}" sap2010:WorkflowViewState.IdRef="AddQueueItem_1">
+                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="484.8,575.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:AddQueueItem TimeoutMS="{x:Null}" DisplayName="Add Queue Item - Work item" sap:VirtualizedContainerService.HintSize="451.2,175.2" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_QueueName]" Reference="[wiid + &quot;_&quot; + Date.Now.ToString()]">
                     <ui:AddQueueItem.ItemInformation>
                       <InArgument x:TypeArguments="x:String" x:Key="WIID">[wiid]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="Type">[CurrentRow("Type").ToString.Trim]</InArgument>
@@ -101,7 +140,7 @@
                       <InArgument x:TypeArguments="x:String" x:Key="Date">[CurrentRow("Date").ToString.Trim]</InArgument>
                     </ui:AddQueueItem.ItemInformation>
                   </ui:AddQueueItem>
-                  <Assign DisplayName="Assign - Count item added" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign - Count item added" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[out_ItemsAdded]</OutArgument>
                     </Assign.To>
@@ -109,7 +148,7 @@
                       <InArgument x:TypeArguments="x:Int32">[out_ItemsAdded + 1]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message - Item added" Level="Trace" Message="[&quot;Queue item added. WIID=&quot; &amp; wiid]" sap2010:WorkflowViewState.IdRef="LogMessage_2" />
+                  <ui:LogMessage DisplayName="Log Message - Item added" sap:VirtualizedContainerService.HintSize="451.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Queue item added. WIID=&quot; &amp; wiid]" />
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -118,11 +157,21 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                      <If DisplayName="If duplicate reference" Condition="[exception.Message.IndexOf(&quot;Duplicate Reference&quot;, StringComparison.OrdinalIgnoreCase) &gt;= 0]" sap2010:WorkflowViewState.IdRef="If_2">
+                    <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="484.8,464" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If Condition="[exception.Message.IndexOf(&quot;Duplicate Reference&quot;, StringComparison.OrdinalIgnoreCase) &gt;= 0]" DisplayName="If duplicate reference" sap:VirtualizedContainerService.HintSize="451.2,404" sap2010:WorkflowViewState.IdRef="If_2">
                         <If.Then>
-                          <Sequence DisplayName="Then - Duplicate, skip" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                            <Assign DisplayName="Assign - Count duplicate skipped" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Sequence DisplayName="Then - Duplicate, skip" sap:VirtualizedContainerService.HintSize="449.6,254.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign - Count duplicate skipped" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Int32">[out_DuplicatesSkipped]</OutArgument>
                               </Assign.To>
@@ -130,7 +179,7 @@
                                 <InArgument x:TypeArguments="x:Int32">[out_DuplicatesSkipped + 1]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <ui:LogMessage DisplayName="Log Message - Duplicate skipped" Level="Warn" Message="[&quot;Duplicate reference skipped. WIID=&quot; &amp; wiid &amp; &quot; is already in queue &quot; &amp; in_QueueName &amp; &quot;.&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_3" />
+                            <ui:LogMessage DisplayName="Log Message - Duplicate skipped" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Duplicate reference skipped. WIID=&quot; &amp; wiid &amp; &quot; is already in queue &quot; &amp; in_QueueName &amp; &quot;.&quot;]" />
                           </Sequence>
                         </If.Then>
                         <If.Else>
@@ -143,7 +192,7 @@
                                 <InArgument x:TypeArguments="x:Int32">[out_ItemsFailed + 1]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <ui:LogMessage DisplayName="Log Message - Item failed" Level="Error" Message="[&quot;Queue item could not be added. WIID=&quot; &amp; wiid &amp; &quot; | &quot; &amp; exception.ToString]" sap2010:WorkflowViewState.IdRef="LogMessage_4" />
+                            <ui:LogMessage DisplayName="Log Message - Item failed" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Queue item could not be added. WIID=&quot; &amp; wiid &amp; &quot; | &quot; &amp; exception.ToString]" />
                           </Sequence>
                         </If.Else>
                       </If>
@@ -156,6 +205,6 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message - End" Level="Info" Message="[&quot;AddWorkItemsToQueue finished. Added=&quot; &amp; out_ItemsAdded.ToString &amp; &quot; | DuplicatesSkipped=&quot; &amp; out_DuplicatesSkipped.ToString &amp; &quot; | Failed=&quot; &amp; out_ItemsFailed.ToString]" sap2010:WorkflowViewState.IdRef="LogMessage_5" />
+    <ui:LogMessage DisplayName="Log Message - End" sap:VirtualizedContainerService.HintSize="521.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;AddWorkItemsToQueue finished. Added=&quot; &amp; out_ItemsAdded.ToString &amp; &quot; | DuplicatesSkipped=&quot; &amp; out_DuplicatesSkipped.ToString &amp; &quot; | Failed=&quot; &amp; out_ItemsFailed.ToString]" />
   </Sequence>
 </Activity>

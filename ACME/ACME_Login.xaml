@@ -64,28 +64,28 @@
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ACME Login" sap:VirtualizedContainerService.HintSize="686.4,2861.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ACME Login" sap:VirtualizedContainerService.HintSize="686.4,3036.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="686.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME_Login started. URL=&quot; &amp; in_AcmeUrl]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - ACME (open if not open)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,2498.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="ce1a3ed6-493e-4bab-99ab-a2a26a372d95" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - ACME (open if not open)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,2673.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="ce1a3ed6-493e-4bab-99ab-a2a26a372d95" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,2295.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,2470.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State - Login form shown" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="651.2,1500" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="ce1a3ed6-493e-4bab-99ab-a2a26a372d95" Timeout="10" Version="V5">
+            <uix:NCheckState DisplayName="Check App State - Login form shown" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="651.2,1675.2" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="ce1a3ed6-493e-4bab-99ab-a2a26a372d95" Timeout="10" Version="V5">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="649.6,736" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="649.6,911.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="acmeUsername" />
                     <Variable x:TypeArguments="ss:SecureString" Name="acmePassword" />
@@ -95,7 +95,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential - ACME login" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[acmePassword]" Username="[acmeUsername]" />
+                  <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialAssetName]" CacheStrategy="None" DisplayName="Get Credential - ACME login" sap:VirtualizedContainerService.HintSize="616,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[acmePassword]" Username="[acmeUsername]" />
                   <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into - Email" EmptyFieldMode="SingleLine" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="616,245.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="ce1a3ed6-493e-4bab-99ab-a2a26a372d95" Text="[acmeUsername]" Version="V5">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable ContentHash="9gxkC79PYEaC6ispra_GMw" DesignTimeRectangle="335, 371, 606, 43" ElementType="InputBox" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl action='https://acme-test.uipath.com/login' method='POST' tag='FORM' matching:action='fuzzy' fuzzylevel:action='0.0' matching:method='fuzzy' fuzzylevel:method='0.0' /&gt;&lt;webctrl id='email' tag='INPUT' type='email' class='form-control ' aaname='Email:' matching:id='fuzzy' fuzzylevel:id='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' /&gt;" Guid="2414e076-7f00-4cee-9bfd-b41d9d0c045e" InformativeScreenshot="f32f21a4d64f21d3c44130cb07b48501.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/m_mSYCahwkSPQUcB_JiS0g" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/login*' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">

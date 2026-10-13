@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap2010" x:Class="ACME_ACME_NavigateToWorkItems" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ACME_ACME_NavigateToWorkItems" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -55,21 +55,42 @@
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ACME Navigate To Work Items" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <ui:LogMessage DisplayName="Log Message - Start" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME_NavigateToWorkItems started.&quot;]" />
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - ACME (attach only)" HealingAgentBehavior="Job" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="69c90b3a-3aa3-4186-8239-0d1e08449dc7" Version="V2">
+  <Sequence DisplayName="ACME Navigate To Work Items" sap:VirtualizedContainerService.HintSize="686.4,1354.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="686.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME_NavigateToWorkItems started.&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser - ACME (attach only)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="686.4,991.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Never" ScopeGuid="69c90b3a-3aa3-4186-8239-0d1e08449dc7" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <uix:NCheckState DisplayName="Check App State - Work Items menu shown" HealingAgentBehavior="Disabled" sap2010:WorkflowViewState.IdRef="NCheckState_2" Timeout="3" Version="V5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="684.8,788" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NCheckState DisplayName="Check App State - Work Items menu shown" HealingAgentBehavior="Disabled" sap:VirtualizedContainerService.HintSize="651.2,514.4" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="69c90b3a-3aa3-4186-8239-0d1e08449dc7" Timeout="3" Version="V5">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap2010:WorkflowViewState.IdRef="Sequence_5" />
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="649.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="649.6,80" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                   <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Home (return to dashboard)" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" Version="V5">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable ContentHash="zMIbs7HCs0uVlzmHhqPtOA" DesignTimeRectangle="1299, 0, 84, 63" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl href='/' parentid='bs-example-navbar-collapse-*' tag='A' /&gt;" Guid="d8faa3ec-ddf4-4d06-a43f-6f4e25407eb6" InformativeScreenshot="78321c27ff43f6e5a3a740161b48ad9f.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/vSxXddQ9NkmlQue2nbOpRg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
@@ -81,7 +102,7 @@
                 <uix:TargetAnchorable ContentHash="C5pDhHLkx0qQV0tKFRX5ag" DesignTimeRectangle="334, 647, 250, 20" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl href='https://acme-test.uipath.com/work-items' tag='A' /&gt;" Guid="b4d99c3d-470e-4c9d-9dce-232b20531d56" InformativeScreenshot="89ded0d3c030c3d76ecb26d943be736d.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/wH1TpQdEvE6ih0JgBB-Zbg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
               </uix:NCheckState.Target>
             </uix:NCheckState>
-            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Work Items menu" HealingAgentBehavior="SameAsCard" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" Version="V5">
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Work Items menu" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="651.2,193.6" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="69c90b3a-3aa3-4186-8239-0d1e08449dc7" Version="V5">
               <uix:NClick.Target>
                 <uix:TargetAnchorable ContentHash="C5pDhHLkx0qQV0tKFRX5ag" DesignTimeRectangle="334, 647, 250, 20" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl href='https://acme-test.uipath.com/work-items' tag='A' /&gt;" Guid="b4d99c3d-470e-4c9d-9dce-232b20531d56" InformativeScreenshot="89ded0d3c030c3d76ecb26d943be736d.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/wH1TpQdEvE6ih0JgBB-Zbg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
               </uix:NClick.Target>
@@ -115,6 +136,6 @@
         <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" ContentHash="aqMvG_C1C0Gtw9S-zTFtzw" InformativeScreenshot="45cb3244f83e6b0c125a3ba0ce1ce064.jpg" Reference="n8cCLzdjlUqsoTvy3EAcVQ/LTpL2H26qU28vL8dEiGf5Q" Selector="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/*' /&gt;" Url="https://acme-test.uipath.com/work-items" Version="V3" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <ui:LogMessage DisplayName="Log Message - End" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;ACME_NavigateToWorkItems finished.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message - End" sap:VirtualizedContainerService.HintSize="686.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;ACME_NavigateToWorkItems finished.&quot;]" />
   </Sequence>
 </Activity>

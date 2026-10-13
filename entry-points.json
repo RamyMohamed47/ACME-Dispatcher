@@ -4,7 +4,45 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "fa1bb3e2-535f-42ab-9228-9febdd9c9183",
-      "type": "process"
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "in_QueueName": {
+            "type": "string",
+            "x-default-expression": "\"ACME_ClientSecurityHash\"",
+            "default": "ACME_ClientSecurityHash"
+          },
+          "in_UrlAssetName": {
+            "type": "string",
+            "x-default-expression": "\"ACME_URL\"",
+            "default": "ACME_URL"
+          },
+          "in_CredentialAssetName": {
+            "type": "string",
+            "x-default-expression": "\"ACME_Credential\"",
+            "default": "ACME_Credential"
+          },
+          "in_WorkItemType": {
+            "type": "string",
+            "x-default-expression": "\"WI5\"",
+            "default": "WI5"
+          },
+          "in_WorkItemStatus": {
+            "type": "string",
+            "x-default-expression": "\"Open\"",
+            "default": "Open"
+          },
+          "in_PageSize": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647,
+            "x-default-expression": "10",
+            "default": 10
+          }
+        },
+        "required": []
+      }
     }
   ]
 }
