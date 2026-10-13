@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Work Items",
+  "Description": "Work Items list page of the ACME System 1 web application, with the paginated work items table",
+  "Type": "Screen",
+  "Id": "guHMcY9IkkW9HtGfYzTHfA",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/guHMcY9IkkW9HtGfYzTHfA",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/2gSw07hWKUa2rmgovTEnCA",
+  "Created": "2026-10-13T18:51:39.6116669Z",
+  "Updated": "2026-10-13T18:51:39.6116669Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

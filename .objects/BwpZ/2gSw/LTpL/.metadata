@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Any Page",
+  "Description": "Any page of the ACME System 1 web application; used to attach regardless of the current page, for example when closing",
+  "Type": "Screen",
+  "Id": "LTpL2H26qU28vL8dEiGf5Q",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/LTpL2H26qU28vL8dEiGf5Q",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/2gSw07hWKUa2rmgovTEnCA",
+  "Created": "2026-10-13T18:53:18.6159273Z",
+  "Updated": "2026-10-13T18:53:18.6159273Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

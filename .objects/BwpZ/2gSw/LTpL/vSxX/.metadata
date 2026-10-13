@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Home Link",
+  "Description": "Home link in the top navigation bar, shown on every page; returns to the dashboard",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "vSxXddQ9NkmlQue2nbOpRg",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/vSxXddQ9NkmlQue2nbOpRg",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/LTpL2H26qU28vL8dEiGf5Q",
+  "Created": "2026-10-13T18:54:29.8083178Z",
+  "Updated": "2026-10-13T18:54:29.8083178Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

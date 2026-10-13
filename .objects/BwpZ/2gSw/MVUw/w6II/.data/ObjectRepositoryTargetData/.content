@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="xAti_N7SZkKAnyi6oI-wew" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="344, 694, 75, 42" DesignTimeScaleFactor="1.25" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl action='https://acme-test.uipath.com/login' method='POST' tag='FORM' visibleinnertext='*Login Forgot Your Password? Register*' /&gt;&lt;webctrl aaname='                             Login                         ' class='*btn-primary*' tag='BUTTON' /&gt;" Guid="226ebf3e-b924-4ea1-a7c8-32cb8e309a5e" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/login*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="0" />
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="0804b6a4f81438ea8538ce21ad368a92.jpg" xmlns="">0gS68CJcwVkugvXL97pyxtw</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

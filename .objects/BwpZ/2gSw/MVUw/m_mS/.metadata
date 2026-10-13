@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Email Input",
+  "Description": "Email text box in the login form on the Login page",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "m_mSYCahwkSPQUcB_JiS0g",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/m_mSYCahwkSPQUcB_JiS0g",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/MVUwapU8zkaJ8LJC6E0u5w",
+  "Created": "2026-10-13T18:45:15.8237247Z",
+  "Updated": "2026-10-13T18:45:15.8237247Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

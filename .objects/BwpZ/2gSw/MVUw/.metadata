@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Login",
+  "Description": "Login page of the ACME System 1 web application",
+  "Type": "Screen",
+  "Id": "MVUwapU8zkaJ8LJC6E0u5w",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/MVUwapU8zkaJ8LJC6E0u5w",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/2gSw07hWKUa2rmgovTEnCA",
+  "Created": "2026-10-13T18:44:54.328051Z",
+  "Updated": "2026-10-13T18:44:54.328051Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

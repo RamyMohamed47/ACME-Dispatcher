@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="mq-GGsB5QU6gUAM6YscTqA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="960, 833, 624, 27" DesignTimeScaleFactor="1.25" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='*page-numbers*' parentclass='*woocommerce-pagination*' tag='UL' /&gt;" Guid="e850f2f6-5f83-428c-acbd-7af95bdb1ec5" ScopeSelectorArgument="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/work-items*' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="0" />
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="90178adfa3b858129fbed3c8a6a170be.jpg" xmlns="">0AmPT6wTc2Ei5SXC9c3lD3w</imageRef>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" this:Main.in_QueueName="ACME_ClientSecurityHash" this:Main.in_UrlAssetName="ACME_URL" this:Main.in_CredentialAssetName="ACME_Credential" this:Main.in_WorkItemType="WI5" this:Main.in_WorkItemStatus="Open" this:Main.in_PageSize="10" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_QueueName" Type="InArgument(x:String)" />
+    <x:Property Name="in_UrlAssetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CredentialAssetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_WorkItemType" Type="InArgument(x:String)" />
+    <x:Property Name="in_WorkItemStatus" Type="InArgument(x:String)" />
+    <x:Property Name="in_PageSize" Type="InArgument(x:Int32)" />
+  </x:Members>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -18,6 +26,7 @@
       <x:String>System.IO</x:String>
       <x:String>System.Linq</x:String>
       <x:String>System.Net.Mail</x:String>
+      <x:String>System.Security</x:String>
       <x:String>System.Xml</x:String>
       <x:String>System.Xml.Linq</x:String>
       <x:String>UiPath.Core</x:String>
@@ -56,10 +65,155 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <sap:WorkflowViewStateService.ViewState>
-      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-      </scg:Dictionary>
-    </sap:WorkflowViewStateService.ViewState>
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="acmeUrl" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_WorkItems" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_FilteredWorkItems" />
+      <Variable x:TypeArguments="x:Int32" Name="pageCount" Default="0" />
+      <Variable x:TypeArguments="x:Int32" Name="rowsExtracted" Default="0" />
+      <Variable x:TypeArguments="x:Int32" Name="rowsFiltered" Default="0" />
+      <Variable x:TypeArguments="x:Int32" Name="itemsAdded" Default="0" />
+      <Variable x:TypeArguments="x:Int32" Name="duplicatesSkipped" Default="0" />
+      <Variable x:TypeArguments="x:Int32" Name="itemsFailed" Default="0" />
+    </Sequence.Variables>
+    <ui:AddLogFields DisplayName="Add Log Fields - Dispatcher context" sap2010:WorkflowViewState.IdRef="AddLogFields_1">
+      <ui:AddLogFields.Fields>
+        <InArgument x:TypeArguments="x:String" x:Key="ProcessRole">["Dispatcher"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="QueueName">[in_QueueName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="WorkItemType">[in_WorkItemType]</InArgument>
+      </ui:AddLogFields.Fields>
+    </ui:AddLogFields>
+    <ui:LogMessage DisplayName="Log Message - Dispatcher started" Level="Info" Message="[&quot;Dispatcher started. Queue=&quot; &amp; in_QueueName &amp; &quot; | Type=&quot; &amp; in_WorkItemType &amp; &quot; | Status=&quot; &amp; in_WorkItemStatus]" sap2010:WorkflowViewState.IdRef="LogMessage_1" />
+    <TryCatch DisplayName="Try Catch - Dispatch work items" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - GetOrchestratorAssets" UnSafe="False" WorkflowFileName="Framework\GetOrchestratorAssets.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_UrlAssetName">[in_UrlAssetName]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_AcmeUrl">[acmeUrl]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - ACME_Login" UnSafe="False" WorkflowFileName="ACME\ACME_Login.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_AcmeUrl">[acmeUrl]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CredentialAssetName">[in_CredentialAssetName]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:RetryScope DisplayName="Retry Scope - Navigate and extract" LogRetriedExceptions="True" RetriedExceptionsLogLevel="Warn" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+            <ui:RetryScope.NumberOfRetries>
+              <InArgument x:TypeArguments="x:Int32">
+                <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="3" />
+              </InArgument>
+            </ui:RetryScope.NumberOfRetries>
+            <ui:RetryScope.RetryInterval>
+              <InArgument x:TypeArguments="s:TimeSpan">
+                <VisualBasicValue x:TypeArguments="s:TimeSpan" ExpressionText="TimeSpan.FromSeconds(5)" />
+              </InArgument>
+            </ui:RetryScope.RetryInterval>
+            <ui:RetryScope.ActivityBody>
+              <ActivityAction>
+                <Sequence DisplayName="Action" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - ACME_NavigateToWorkItems" UnSafe="False" WorkflowFileName="ACME\ACME_NavigateToWorkItems.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" />
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - ACME_ExtractWorkItems" UnSafe="False" WorkflowFileName="ACME\ACME_ExtractWorkItems.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="in_PageSize">[in_PageSize]</InArgument>
+                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_WorkItems">[dt_WorkItems]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Int32" x:Key="out_PageCount">[pageCount]</OutArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </ActivityAction>
+            </ui:RetryScope.ActivityBody>
+            <ui:RetryScope.Condition>
+              <ActivityFunc x:TypeArguments="x:Boolean" />
+            </ui:RetryScope.Condition>
+          </ui:RetryScope>
+          <Assign DisplayName="Assign - rowsExtracted" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[rowsExtracted]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[dt_WorkItems.Rows.Count]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - FilterWorkItems" UnSafe="False" WorkflowFileName="Dispatcher\FilterWorkItems.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_WorkItems">[dt_WorkItems]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemType">[in_WorkItemType]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemStatus">[in_WorkItemStatus]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FilteredWorkItems">[dt_FilteredWorkItems]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign - rowsFiltered" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[rowsFiltered]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[dt_FilteredWorkItems.Rows.Count]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - AddWorkItemsToQueue" UnSafe="False" WorkflowFileName="Dispatcher\AddWorkItemsToQueue.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_WorkItems">[dt_FilteredWorkItems]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_QueueName">[in_QueueName]</InArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_ItemsAdded">[itemsAdded]</OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_DuplicatesSkipped">[duplicatesSkipped]</OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="out_ItemsFailed">[itemsFailed]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <If DisplayName="If any queue item failed" Condition="[itemsFailed &gt; 0]" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Throw DisplayName="Throw - Queue items failed" Exception="[New ApplicationException(itemsFailed.ToString &amp; &quot; work item(s) could not be added to queue &quot; &amp; in_QueueName &amp; &quot;. See the Error log entries for each WIID.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Sequence>
+            </If.Then>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <ui:LogMessage DisplayName="Log Message - Dispatcher failed" Level="Error" Message="[&quot;Dispatcher failed: &quot; &amp; exception.ToString]" sap2010:WorkflowViewState.IdRef="LogMessage_2" />
+              <Rethrow DisplayName="Rethrow - Dispatcher failure" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <TryCatch DisplayName="Try Catch - Close ACME" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch.Try>
+              <Sequence DisplayName="Try" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Workflow File - ACME_Close" UnSafe="False" WorkflowFileName="ACME\ACME_Close.xaml" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" />
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="closeException" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Catch" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <ui:LogMessage DisplayName="Log Message - Close failed" Level="Warn" Message="[&quot;ACME could not be closed (it may not have been open): &quot; &amp; closeException.Message]" sap2010:WorkflowViewState.IdRef="LogMessage_3" />
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <ui:LogMessage DisplayName="Log Message - Dispatcher summary" Level="Info" Message="[&quot;Dispatcher summary | Extracted=&quot; &amp; rowsExtracted.ToString &amp; &quot; | Filtered=&quot; &amp; rowsFiltered.ToString &amp; &quot; | Added=&quot; &amp; itemsAdded.ToString &amp; &quot; | DuplicatesSkipped=&quot; &amp; duplicatesSkipped.ToString &amp; &quot; | Failed=&quot; &amp; itemsFailed.ToString &amp; &quot; | Pages=&quot; &amp; pageCount.ToString]" sap2010:WorkflowViewState.IdRef="LogMessage_4" />
+          <ui:RemoveLogFields DisplayName="Remove Log Fields - Dispatcher context" sap2010:WorkflowViewState.IdRef="RemoveLogFields_1">
+            <ui:RemoveLogFields.Fields>
+              <InArgument x:TypeArguments="x:String">ProcessRole</InArgument>
+              <InArgument x:TypeArguments="x:String">QueueName</InArgument>
+              <InArgument x:TypeArguments="x:String">WorkItemType</InArgument>
+            </ui:RemoveLogFields.Fields>
+          </ui:RemoveLogFields>
+        </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
   </Sequence>
 </Activity>

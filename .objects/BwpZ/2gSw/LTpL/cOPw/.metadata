@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Dashboard Heading",
+  "Description": "Static Dashboard page heading at the top of the content area, present only on the dashboard when logged in",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "cOPwtdiQ0kiKM4E_aMs-5A",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/cOPwtdiQ0kiKM4E_aMs-5A",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/LTpL2H26qU28vL8dEiGf5Q",
+  "Created": "2026-10-13T19:17:44.8937334Z",
+  "Updated": "2026-10-13T19:17:44.8937334Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

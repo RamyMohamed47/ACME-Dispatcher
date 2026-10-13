@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Pager List",
+  "Description": "Pagination list below the work items table, containing page number links and the Next link",
+  "Type": "Element",
+  "TaxonomyType": "Listbox",
+  "Id": "gGlR3tc8HESpd7Y1_xXZ8Q",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/gGlR3tc8HESpd7Y1_xXZ8Q",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/guHMcY9IkkW9HtGfYzTHfA",
+  "Created": "2026-10-13T18:52:46.6075428Z",
+  "Updated": "2026-10-13T18:52:46.6075428Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

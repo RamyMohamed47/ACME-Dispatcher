@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Work Items Table",
+  "Description": "Table listing work items with columns Actions, WIID, Description, Type, Status, Date",
+  "Type": "Element",
+  "TaxonomyType": "None",
+  "Id": "pEwMSVBMK0OHslmz0PuycA",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/pEwMSVBMK0OHslmz0PuycA",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/guHMcY9IkkW9HtGfYzTHfA",
+  "Created": "2026-10-13T18:52:46.5704094Z",
+  "Updated": "2026-10-13T18:52:46.5704094Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

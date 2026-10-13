@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryScreenData ContentHash="6-lDEcMmDEilw4Ejk3oyHw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryScreenData.Data>
+    <TargetApp x:Key="TargetApp" Area="-9, -9, 1938, 1038" BrowserType="Chrome" Selector="&lt;html app='chrome.exe' title='*ACME System*' url='https://acme-test.uipath.com/work-items*' /&gt;" Url="https://acme-test.uipath.com/work-items" Version="V3">
+      <imageRef attrName="InformativeScreenshot" originalValue="c6188dfbe9289796c7bd90c65b211593.jpg" xmlns="">0ciiAp-duvkC49VIcYRhQsw</imageRef>
+    </TargetApp>
+    <NInteractionMode x:Key="InteractionMode">DebuggerApi</NInteractionMode>
+  </ObjectRepositoryScreenData.Data>
+</ObjectRepositoryScreenData>

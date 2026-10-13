@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Work Items Menu",
+  "Description": "Work Items menu link in the dashboard button grid",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "wH1TpQdEvE6ih0JgBB-Zbg",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/wH1TpQdEvE6ih0JgBB-Zbg",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/LTpL2H26qU28vL8dEiGf5Q",
+  "Created": "2026-10-13T19:17:44.9513995Z",
+  "Updated": "2026-10-13T19:17:44.9513995Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

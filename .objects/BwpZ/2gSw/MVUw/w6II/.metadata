@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Login Button",
+  "Description": "Button that submits the login form on the Login page",
+  "Type": "Element",
+  "TaxonomyType": "Button",
+  "Id": "w6IIoNSxRUu1ia4aELJyjw",
+  "Reference": "n8cCLzdjlUqsoTvy3EAcVQ/w6IIoNSxRUu1ia4aELJyjw",
+  "ParentRef": "n8cCLzdjlUqsoTvy3EAcVQ/MVUwapU8zkaJ8LJC6E0u5w",
+  "Created": "2026-10-13T18:45:15.9440763Z",
+  "Updated": "2026-10-13T18:45:15.9440763Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
